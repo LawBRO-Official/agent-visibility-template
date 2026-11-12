@@ -1,0 +1,43 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "agent-visibility-template",
+	"main": "./src/worker/index.ts",
+	"compatibility_date": "2025-10-08",
+	"upload_source_maps": true,
+	"observability": {
+		"enabled": true
+	},
+	"assets": {
+		"directory": "./dist/client",
+		"not_found_handling": "single-page-application",
+		"run_worker_first": [
+			"/.well-known/web-bot-auth/*",
+			"/api",
+			"/api/*",
+			"/index.json",
+			"/jsonld",
+			"/llms-full.txt",
+			"/llms.txt",
+			"/robots.txt",
+			"/*.jsonld",
+			"/*.md"
+		]
+	},
+	"ai": {
+		"binding": "AI"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "VISIBILITY_CACHE",
+			"id": "024edf7595c74e2d82b89d3dc3da1c65"
+		}
+	],
+	"vars": {
+		"SITE_NAME": "LawBRO",
+		"SITE_DESCRIPTION": "LawBRO is a premier digital legal-tech and compliance platform designed to make legal, tax, trademark, and business services accessible, affordable, and transparent for individuals, startups, enterprises, and non-resident Indians (NRIs). Connecting users with qualified advocates, chartered accountants, and legal professionals across hundreds of cities, the platform offers a comprehensive ecosystem covering multiple core service verticals. 1. Legal Services & Advocate Support LawBRO provides direct access to qualified lawyers and advocates for comprehensive dispute resolution, litigation support, and advisory:  * Legal Consultations: One-on-one audio, video, and chat consultations with verified legal experts.  * Legal Notices & Replies: Drafting and issuing formal legal notices (such as for recovery, breach of contract, property disputes, or cheque bounce matters) and crafting precise replies to incoming notices.  * Document & Contract Drafting: Custom drafting and review of startup documents (Term Sheets, Privacy Policies, Shareholder Agreements, Terms of Use), general contracts (Freelancer Agreements, Letter of Intent, Loan Agreements), and property documents (Gift Deeds, Wills, Sale Deeds, Commercial Lease Agreements).  * Specialized Legal Assistance: Dedicated handling for cybercrime, online scams/fraud recovery, cheque-bounce proceedings, property disputes, and family law matters.  * Vidhi AI Assistant: An integrated legal-information tool designed to help users quickly search and understand basic legal frameworks and procedures. 2. Tax, Compliance & GST Services The platform provides expert-backed chartered accountant (CA) services to manage corporate and individual tax requirements seamlessly:  * Income Tax Return (ITR) Filing: Professional assistance for accurate and optimized individual, professional, and corporate ITR filings.  * GST Services: End-to-end GST registration, regular GST return filing, and compliance support.  * International Remittance & Tax (Forms 15CA & 15CB): Specialized advisory and certification support for cross-border transactions, foreign remittances, and NRI tax basics (TDS and ITR).  * Tax Notice Management: Expert review and compliance strategy for handling tax notices issued by authorities. 3. Trademark & Intellectual Property (IP) Services LawBRO safeguards brand identities and intellectual assets from initial filings to long-term monitoring:  * Trademark Registration: Comprehensive pre-filing brand name availability checks, trademark filing, and documentation.  * IP Protection & Maintenance: Handling trademark renewals, drafting replies to examination reports (objections), managing trademark oppositions, and logo design consultations. 4. Business Setup & Corporate Compliance For entrepreneurs and growing businesses, LawBRO streamlines corporate formations and statutory compliances from day one:  * Business Registration: Private Limited Company registration, Limited Liability Partnership (LLP) setup, and MSME / Udyam registration.  * Ongoing Compliance: Corporate secretarial upkeep, annual filings, and regulatory compliance mapping for entities. 5. NRI & Foreigner Legal Support Hub A dedicated division tailored to help international clients and non-resident Indians navigate Indian legal and administrative frameworks from abroad:  * Cross-Border Legal Help: Guidance on managing ancestral property, property verification, valuation forecasts, and real estate investment consultancy in India.  * Online Fraud & Scam Assistance: Dedicated tracking, preliminary evaluations, and structured steps for individuals targeted by online scams or fraudulent entities operating within India.  * Time-Zone Flexibility: Consultations structured around international time zones spanning the USA, UK, UAE, Canada, Australia, Singapore, Germany, and beyond. 6. Community, Welfare & Pro-Bono Initiatives Beyond commercial services, LawBRO operates with a strong social mission rooted in access to justice:  * Legal Community Forum: An interactive ecosystem where citizens can ask questions, engage with legal professionals, and access legal awareness guides.  * Free Initial Guidance: Free first-time consultations for individuals in dire need, online scam victims, and NRIs facing urgent matters.  * Access to Justice Donations: Structured welfare programs (Voice of Justice, Ray of Hope, and Guardian of Justice) dedicated to funding free legal aid for underprivileged clients and supporting student research and pro-bono casework.",
+		"AI_MODEL": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+		"ENRICHMENT_CACHE_TTL": "3600",
+		"CONTENT_SIGNAL": "ai-input=yes, search=yes, ai-train=no",
+		"ENABLE_WEB_BOT_AUTH": "false"
+	}
+}
